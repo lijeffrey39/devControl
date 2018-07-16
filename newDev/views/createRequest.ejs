@@ -18,6 +18,19 @@
     <link href="starter-template.css" rel="stylesheet">
 
     <script src ="./js/createRequest.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAyXT6uOdnaUbVFFiFgrx15cRVqXlg36U8",
+            authDomain: "devuirequests.firebaseapp.com",
+            databaseURL: "https://devuirequests.firebaseio.com",
+            projectId: "devuirequests",
+            storageBucket: "devuirequests.appspot.com",
+            messagingSenderId: "998440297406"
+        };
+        firebase.initializeApp(config);
+    </script>
 
     <style type="text/css">
     div.requestor_list {
@@ -109,6 +122,18 @@
                   <label for="inputPassword" class="col-sm-3 col-form-label">Wafer Id</label>
                   <div class="col-sm-9">
                     <input class="form-control" id="id" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Batch Id</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="batchId" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Tool Set</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="toolSet" placeholder="">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -553,6 +578,53 @@
       x[i].parentNode.removeChild(x[i]);
     }
   }
+
+
+  $('#post').click(function () {
+      var area = '',
+          waferId = '',
+          operationNumber = '',
+          requestor = '',
+          owner = '',
+          request = '',
+          batchId = '',
+          toolSet = '';
+
+      $('option').each(function () {
+          if ($(this).attr('selected') == 'selected') {
+              area = $(this).text();
+          }
+      });
+      if (area == 'Choose...') {
+          alert('Please choose area!')
+      }
+
+      waferId = $('#id').val();
+      operationNumber = $('number').val();
+      requestor = $('#requestor').val();
+      owner = $('#owner').val();
+      request = $('#request').val();
+      var date = jQuary.now();
+      toolSet = $('#toolSet').val();
+      batchId = $('#batchId').val();
+
+      var reqJSON = {
+          batchId: batchId,
+          area: area,
+          waferId: waferId,
+          operationNumber: operationNumber,
+          requestor: requestor,
+          owner: owner,
+          request: request,
+          date: date,
+          toolSet: toolSet,
+          status: 'queued'
+      };
+      $.post('/getNewRequest', reqJSON, function(req, res) {
+
+      });
+  });
+  var
     </script>
 
 
@@ -561,6 +633,5 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   </body>
 </html>
