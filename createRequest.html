@@ -14,11 +14,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-
-
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
+
     <script src ="./js/createRequest.js"></script>
+
+    <style type="text/css">
+    div.requestor_list {
+      border: 1px solid black;
+      background-color: white;
+    }
+    div.requestor_list_mouse_select {
+      border: 1px solid black;
+      background-color: gray;
+    }
+    div.requestor_list_keyboard_select {
+      border: 1px solid black;
+      background-color: green;
+    }
+    div.owner_list {
+      border: 1px solid black;
+      background-color: white;
+    }
+    div.owner_list_mouse_select {
+      border: 1px solid black;
+      background-color: gray;
+    }
+    div.owner_list_keyboard_select {
+      border: 1px solid black;
+      background-color: green;
+    }
+    </style>
+
   </head>
 
   <body>
@@ -79,6 +106,18 @@
                   </div>
                 </div>
                 <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Wafer Id</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="id" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Operation Number</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="number" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Requestor</label>
                   <div class="col-sm-9">
                     <input class="form-control" id="requestor" placeholder="Ex. Integration Eng">
@@ -93,7 +132,7 @@
                 <div class="form-group row">
                   <label for="staticEmail" class="col-sm-3 col-form-label" >Status</label>
                   <div class="col-sm-9">
-                    <input class="form-control" id="owner" placeholder="Queued" readonly>
+                    <input class="form-control" id="status" placeholder="Queued" readonly>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -117,7 +156,7 @@
                   </div>
                 </div>
                 <br>
-                <button type="button" class="btn btn-success btn-lg sharing">Post Request</button>
+                <button type="button" class="btn btn-success btn-lg sharing" id="post" >Post Request</button>
                 <br>
                 <br>
                 <p class="text-secondary"><a href="https://devcontrolcenter.herokuapp.com/editRequest" class="text-secondary" style = "font-size: 12px">Edit my Request</a></p>
@@ -136,6 +175,386 @@
         <br>
 
       </div>
+
+    <script>
+      
+  var names = [ 'Deetta Jahn',
+  'Shanelle Strack',
+  'Maryann Laflamme',
+  'Rosemary Planas',
+  'Maragret Lorenzo',
+  'Donna Goodrow',
+  'Georgeanna Vanzant',
+  'Winfred Henry',
+  'Ben Brann',
+  'Dennis Milardo',
+  'Magdalen Lahman',
+  'Carola Lamanna',
+  'Cheyenne Walz',
+  'Caroyln Kroger',
+  'Michiko Licari',
+  'Santana Luoma',
+  'Kimberli Huynh',
+  'Grant Dano',
+  'Alex Danziger',
+  'Cordelia Waggoner',
+  'Leslie Doyle',
+  'Ricardo Parkin',
+  'Song Olmo',
+  'Myrna Ader',
+  'Retta Rowland',
+  'Chasidy Barrick',
+  'Aletha Fagg',
+  'Maryalice Seldon',
+  'Nobuko Meder',
+  'Tamekia Wrobel',
+  'Noriko Speers',
+  'Hulda Swearngin',
+  'Heriberto Willner',
+  'Valentine Kreisel',
+  'Misty Bays',
+  'Sheena Woolley',
+  'Brandon Saari',
+  'Dierdre Livingstone',
+  'Dessie Kovats',
+  'Lorenzo Gum',
+  'Candie Trusty',
+  'Janean Mccoin',
+  'Bonita Milam',
+  'Terrilyn Pettie',
+  'Kandis Harting',
+  'Desirae Siddiqi',
+  'Fonda Clewis',
+  'Branda Kinner',
+  'Ruthanne Merle',
+  'Tia Prater',
+  'Napoleon Righter',
+  'Gregoria Hasson',
+  'Vanna Duncanson',
+  'Maribeth Mcgoldrick',
+  'Hipolito Mcneill',
+  'Bella Emrich',
+  'Danna Romberger',
+  'Jenelle Baskette',
+  'Patricia Watlington',
+  'Clotilde Laudenslager',
+  'Shantell Alldredge',
+  'Cherlyn Carmean',
+  'Franklyn Schrader',
+  'Nereida Maxson',
+  'Damien Mota',
+  'Hwa Kovac',
+  'Nidia Rainey',
+  'Marlys Simo',
+  'Amy Bancroft',
+  'Brooke Santillanes',
+  'Mariella Knick',
+  'Syreeta Dempster',
+  'Kasandra Sheilds',
+  'Zoraida Levey',
+  'Brigida Balog',
+  'Margert Maudlin',
+  'Rod Rozek',
+  'Annice Klee',
+  'Vasiliki Brewton',
+  'Heide Lui',
+  'Marcus Feth',
+  'Sanda Belgarde',
+  'Debroah Pulver',
+  'Dorthey Bridwell',
+  'Joshua Lebron',
+  'Lita Hanford',
+  'Delmer Menefee',
+  'Kelsie Sanderfur',
+  'Lavona Marcinko',
+  'Lori Asbell',
+  'Cortez Jang',
+  'Bettyann Medley',
+  'Jeff Heineman',
+  'Earleen Fiedler',
+  'Hope Zaremba',
+  'Leida Disanto',
+  'Vina Charley',
+  'Agnus Yarborough',
+  'Quiana Blau',
+  'Keila Minjares',
+  'Kevin Zeng',
+  'Stefanie Lau',
+  'Huanze Shu' ];
+
+  /*stored as an array of of size 2 arrays with first and last name*/
+  var splitnames = [];
+  for(i = 0; i < names.length; i++){
+    splitnames.push(names[i].split(" "));
+  }
+
+  var openFile = function(event) {
+    var input = event.target;
+
+    var reader = new FileReader();
+    reader.onload = function(){
+       var text = reader.result;
+    };
+    reader.readAsText(input.files[0]);
+  };
+
+  var requestor = document.getElementById("requestor");  //requestor input field
+  requestor.addEventListener("input", function(e) {
+
+     /*reset*/
+     close_all_requestor();
+
+     /*creates main tab*/
+     var main_tab = document.createElement("DIV");
+     this.parentNode.appendChild(main_tab);
+     main_tab.setAttribute("class", "requestor_list_main");
+
+     for (i = 0; i < names.length; i++) {
+       /*matches first last or full name and checks if input is not empty*/
+       if((splitnames[i][0].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() || splitnames[i][1].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() || (names[i].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() && requestor.value.includes(" "))) && requestor.value != ""){
+
+         /*creates a name tab element*/
+         var tab = document.createElement("DIV");
+         tab.setAttribute("class", "requestor_list");
+         tab.setAttribute("onmouseover", "requestor_select(this)");
+         tab.setAttribute("onmouseout", "requestor_unselect(this)");
+
+         /*full name*/
+         if(names[i].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() && requestor.value.includes(" ")){
+          tab.innerHTML = "<strong>" + names[i].substr(0, requestor.value.length) + "</strong>";
+          tab.innerHTML += names[i].substr(requestor.value.length);
+         }/*first name*/
+         else if(splitnames[i][0].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase()){
+          tab.innerHTML = "<strong>" + splitnames[i][0].substr(0, requestor.value.length) + "</strong>";
+          tab.innerHTML += splitnames[i][0].substr(requestor.value.length) + " " + splitnames[i][1];
+         }/*last name*/
+         else{
+          tab.innerHTML = splitnames[i][0] + " ";
+          tab.innerHTML += "<strong>" + splitnames[i][1].substr(0, requestor.value.length) + "</strong>";
+          tab.innerHTML += splitnames[i][1].substr(requestor.value.length);
+         }
+
+         /*adds name to input field when clicked on*/
+         tab.innerHTML += "<input type='hidden' value='" + names[i] + "'>";
+         tab.addEventListener("click", function(e) {
+              requestor.value = this.getElementsByTagName("input")[0].value;
+              close_all_requestor();
+         });
+
+         /*add name tab to main tab*/
+         main_tab.appendChild(tab);
+       }
+     }
+  });
+
+  var requestor_keyboard_select_index = -1;
+  requestor.addEventListener("keydown", function(e) {
+  var mouse_index_element = null; //element mouse is over
+
+    /*set the mouse elemet to a normal element to prevent counting error, the mouse elemenent's class is restored at the end of the function if it does not become the element selected by the arrowkeys*/
+    if(document.getElementsByClassName("requestor_list_mouse_select").length != 0){
+      mouse_index_element = document.getElementsByClassName("requestor_list_mouse_select")[0];
+      mouse_index_element.setAttribute("class", "requestor_list");
+    }
+
+    if (e.which == 40){//down
+      if(requestor_keyboard_select_index >= 0 && requestor_keyboard_select_index <  document.getElementsByClassName("requestor_list").length){//move element selected by keyboard to the one below,  does nothing if already the last element on the list
+
+        /*previously selected element is set to normal list element*/
+        document.getElementsByClassName("requestor_list_keyboard_select")[0].setAttribute("class", "requestor_list");
+        requestor_keyboard_select_index++;
+        /*next element down is set to keyboard selected element*/
+        document.getElementsByClassName("requestor_list")[requestor_keyboard_select_index].setAttribute("class", "requestor_list_keyboard_select");
+      }/*no element selected*/
+      else if(requestor_keyboard_select_index <  document.getElementsByClassName("requestor_list").length){
+        /*sets selected element to first (top) one on list */
+        document.getElementsByClassName("requestor_list")[0].setAttribute("class", "requestor_list_keyboard_select");
+        requestor_keyboard_select_index++;
+      }
+    }
+    else if(e.which == 38){//up
+      /*move selected element up by one if it is not the top element and a selected element exists*/
+      if(requestor_keyboard_select_index > 0){
+        /*set previous selected element to a normal list element */
+        document.getElementsByClassName("requestor_list_keyboard_select")[0].setAttribute("class", "requestor_list");
+        requestor_keyboard_select_index--;
+        /*next element up is set to keyboard selected element*/
+        document.getElementsByClassName("requestor_list")[requestor_keyboard_select_index].setAttribute("class", "requestor_list_keyboard_select");
+      }
+    }
+    else if (e.which == 13){//enter
+      /*set input field to the selected element's name*/
+      if(document.getElementsByClassName("requestor_list_keyboard_select").length != 0){
+        requestor.value = document.getElementsByClassName("requestor_list_keyboard_select")[0].getElementsByTagName("input")[0].value;
+      }
+      /*rests*/
+      close_all_requestor();
+      this.blur();
+    }else{
+      requestor_keyboard_select_index = -1;
+    }
+    /*resets the mouse selected element if it did not become the keyboard selected element*/
+    if(mouse_index_element != null && mouse_index_element.className != "requestor_list_keyboard_select"){
+      mouse_index_element.setAttribute("class", "requestor_list_mouse_select");
+    }
+  });
+
+  var owner = document.getElementById("owner"); //owner input field
+  owner.addEventListener("input", function(e) {
+
+     /*resets*/
+     close_all_owner();
+
+     /*creates main tab*/
+     var main_tab = document.createElement("DIV");
+     this.parentNode.appendChild(main_tab);
+     main_tab.setAttribute("class", "owner_list_main");
+     
+     for (i = 0; i < names.length; i++) {
+       /*matches first last or full name and checks if input is not empty*/
+       if((splitnames[i][0].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() || splitnames[i][1].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() || (names[i].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() && owner.value.includes(" "))) && owner.value != ""){
+
+         /*creates a name tab element*/
+         var tab = document.createElement("DIV");
+         tab.setAttribute("class", "owner_list");
+         tab.setAttribute("onmouseover", "owner_select(this)");
+         tab.setAttribute("onmouseout", "owner_unselect(this)");
+
+         /*full name*/
+         if(names[i].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() && owner.value.includes(" ")){
+          tab.innerHTML = "<strong>" + names[i].substr(0, owner.value.length) + "</strong>";
+          tab.innerHTML += names[i].substr(owner.value.length);
+         }/*first name*/
+         else if(splitnames[i][0].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase()){
+          tab.innerHTML = "<strong>" + splitnames[i][0].substr(0, owner.value.length) + "</strong>";
+          tab.innerHTML += splitnames[i][0].substr(owner.value.length) + " " + splitnames[i][1];
+         }/*last name*/
+         else{
+          tab.innerHTML = splitnames[i][0] + " ";
+          tab.innerHTML += "<strong>" + splitnames[i][1].substr(0, owner.value.length) + "</strong>";
+          tab.innerHTML += splitnames[i][1].substr(owner.value.length);
+         }
+
+         /*adds name to input field when clicked on*/
+         tab.innerHTML += "<input type='hidden' value='" + names[i] + "'>";
+         tab.addEventListener("click", function(e) {
+              owner.value = this.getElementsByTagName("input")[0].value;
+              close_all_owner();
+         });
+
+         /*add name tab to main tab*/
+         main_tab.appendChild(tab);
+       }
+     }
+  });
+
+  var owner_keyboard_select_index = -1;
+  owner.addEventListener("keydown", function(e) {
+    var mouse_index_element = null;
+
+    /*set the mouse elemet to a normal element to prevent counting error, the mouse elemenent's class is restored at the end of the function if it does not become the element selected by the arrowkeys*/
+    if(document.getElementsByClassName("owner_list_mouse_select").length != 0){
+      mouse_index_element = document.getElementsByClassName("owner_list_mouse_select")[0];
+      mouse_index_element.setAttribute("class", "owner_list");
+    }
+    if (e.which == 40){//down
+      if(owner_keyboard_select_index >= 0 && owner_keyboard_select_index <  document.getElementsByClassName("owner_list").length){//move element selected by keyboard to the one below,  does nothing if already the last element on the list
+
+        /*previously selected element is set to normal list element*/
+        document.getElementsByClassName("owner_list_keyboard_select")[0].setAttribute("class", "owner_list");
+        owner_keyboard_select_index++;
+        /*next element down is set to keyboard selected element*/
+        document.getElementsByClassName("owner_list")[owner_keyboard_select_index].setAttribute("class", "owner_list_keyboard_select");
+      }/*no element selected*/
+      else if(owner_keyboard_select_index <  document.getElementsByClassName("owner_list").length){
+        /*sets selected element to first (top) one on list */
+        document.getElementsByClassName("owner_list")[0].setAttribute("class", "owner_list_keyboard_select");
+        owner_keyboard_select_index++;
+      }
+    }
+    else if(e.which == 38){//up
+      /*move selected element up by one if it is not the top element and a selected element exists*/
+      if(owner_keyboard_select_index > 0){
+        /*set previous selected element to a normal list element */
+        document.getElementsByClassName("owner_list_keyboard_select")[0].setAttribute("class", "owner_list");
+        owner_keyboard_select_index--;
+        /*next element up is set to keyboard selected element*/
+        document.getElementsByClassName("owner_list")[owner_keyboard_select_index].setAttribute("class", "owner_list_keyboard_select");
+      }
+    }
+    else if (e.which == 13){//enter
+      /*set input field to the selected element's name*/
+      if(document.getElementsByClassName("owner_list_keyboard_select").length != 0){
+        owner.value = document.getElementsByClassName("owner_list_keyboard_select")[0].getElementsByTagName("input")[0].value;
+      }
+      /*rests*/
+      close_all_owner();
+      this.blur();
+    }else{
+      owner_keyboard_select_index = -1;
+    }
+    /*resets the mouse selected element if it did not become the keyboard selected element*/
+    if(mouse_index_element != null && mouse_index_element.className != "owner_list_keyboard_select"){
+      mouse_index_element.setAttribute("class", "owner_list_mouse_select");
+    }
+  });
+
+  /*closes and resets autocomplete field if clicked off*/
+  document.addEventListener("click", function (e) {
+    close_all_owner();
+    close_all_requestor();
+    owner_keyboard_select_index = -1;
+    requestor_keyboard_select_index = -1;
+  });
+
+  function requestor_select(x){
+    if(x.className != "requestor_list_keyboard_select"){
+      x.setAttribute("class", "requestor_list_mouse_select");
+    }
+  }
+
+  function requestor_unselect(x){
+    if(x.className != "requestor_list_keyboard_select"){
+      x.setAttribute("class", "requestor_list");
+    }
+  }
+
+  function close_all_owner(){
+    close("owner_list");
+    close("owner_list_mouse_select");
+    close("owner_list_keyboard_select");
+    close("owner_list_main");
+    owner_keyboard_select_index = -1;
+    requestor_keyboard_select_index = -1;
+  }
+
+  function owner_select(x){
+    if(x.className != "owner_list_keyboard_select"){
+      x.setAttribute("class", "owner_list_mouse_select");
+    }
+  }
+
+  function owner_unselect(x){
+    if(x.className != "owner_list_keyboard_select"){
+      x.setAttribute("class", "owner_list");
+    }
+  }
+
+  function close_all_requestor(){
+    close("requestor_list");
+    close("requestor_list_mouse_select");
+    close("requestor_list_keyboard_select");
+    close("requestor_list_main");
+  }
+
+  function close(name){
+    var x = document.getElementsByClassName(name);
+    for (var i = 0; i < x.length; i++) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+    </script>
+
 
     </main><!-- /.container -->
 
