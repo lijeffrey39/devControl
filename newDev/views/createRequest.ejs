@@ -621,10 +621,11 @@
           status: 'queued'
       };
       $.post('/getNewRequest', reqJSON, function(req, res) {
-
+          if(res['ok']){
+              alert('Update success!!');
+          }
       });
   });
-  var
     </script>
 
 
