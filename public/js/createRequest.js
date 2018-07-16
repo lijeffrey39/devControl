@@ -17,4 +17,11 @@ window.onload = function() {
             options[i]['selected'] = '';
         }
     }
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: success,
+        dataType: 'json'
+    });
 };
