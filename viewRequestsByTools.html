@@ -52,6 +52,26 @@
             padding: 3rem 1.5rem;
             text-align: center;
         }
+        .btn-done {
+            background: lightcoral;
+            border-color: lightcoral;
+            color: white;
+        }
+        .btn-queued {
+            background: #bbb;
+            border-color: #bbb;
+            color: white;
+        }
+        .btn-progress {
+            background: lightgreen;
+            border-color: lightgreen;
+        }
+        .btn-hold {
+            background: lightsalmon;
+            border-color: lightsalmon;
+            color: white;
+        }
+
 
     </style>
 </head>
@@ -126,63 +146,63 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background-color: white">
                                         <div>ID #: 412489</div>
                                         <div>Queued</div>
                                         <div>3/20/2018 4:00</div>
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success">
+                                    <button type="button" class="btn btn-progress">
                                         ID #: 342323<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 342323<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning">
+                                    <button type="button" class="btn btn-hold">
                                         ID #: 223043<br>
                                         On Hold<br>
 
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248343<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger">
+                                    <button type="button" class="btn btn-done">
                                         ID #: 248123<br>
                                         Done<br>
 
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
@@ -212,63 +232,63 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background-color: white">
                                         <div>ID #: 412489</div>
                                         <div>Queued</div>
                                         <div>3/20/2018 4:00</div>
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success"  disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress"  disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 342323<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 342323<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning"  disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold"  disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 223043<br>
                                         On Hold<br>
 
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248343<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-secondary"  disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-queued"  disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248123<br>
                                         Done<br>
 
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
@@ -298,63 +318,63 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 412489<br>
                                         Queued<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success">
+                                    <button type="button" class="btn btn-progress">
                                         ID #: 342323<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 342323<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248343<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
@@ -363,63 +383,63 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 412489<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
@@ -450,63 +470,63 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 412489<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 348093<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 342323<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248065<br>
                                         On Hold<br>
 
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning">
+                                    <button type="button" class="btn btn-hold">
                                         ID #: 223043<br>
                                         On Hold<br>
 
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248343<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
@@ -515,63 +535,63 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 412489<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background-color: white">
                                         Primary<br>
                                         in progress<br>
                                         3/20/2018 4:00
@@ -603,63 +623,63 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 412489<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 348093<br>
                                         In Progress<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 342323<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         On Hold<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 246543<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 268343<br>
                                         Done<br>
                                         3/20/2018 4:00
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger">
+                                    <button type="button" class="btn btn-done">
                                         ID #: 248123<br>
                                         Done<br>
 
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background-color: white">
                                         ID #: 248043<br>
                                         Queued<br>
                                         3/20/2018 4:00

@@ -23,7 +23,7 @@
     $(document).ready(function() {
           $(".table button").click(
               function() {
-                  window.location.href = "./waferStatusExample.html";
+                  window.location.href = "http://devcontrolcenter.herokuapp.com/waferStatusExample";
               }
           );
           $("th").each(function() {
@@ -35,7 +35,7 @@
                   head.css('background-color', '#e9ecef');
               });
               head.click(function () {
-                  window.location.href = './viewRequestsByTools.html';
+                  window.location.href = 'http://devcontrolcenter.herokuapp.com/viewRequestsByTools';
               });
           });
         }
@@ -55,7 +55,8 @@
     }
     button {
       height: 86px;
-      width: 132.573px;
+      width: 176.125px;
+      margin: 1px;
     }
     body {
       padding-top: 5rem;
@@ -63,6 +64,25 @@
     .starter-template {
       padding: 3rem 1.5rem;
       text-align: center;
+    }
+    .btn-done {
+      background: lightcoral;
+      border-color: lightcoral;
+      color: white;
+    }
+    .btn-queued {
+      background: #bbb;
+      border-color: #bbb;
+      color: white;
+    }
+    .btn-progress {
+      background: lightgreen;
+      border-color: lightgreen;
+    }
+    .btn-hold {
+      background: lightsalmon;
+      border-color: lightsalmon;
+      color: white;
     }
 
   </style>
@@ -110,10 +130,10 @@
 
           <form class="form-inline">
             <span>&nbsp</span>
-            <span class="badge badge-secondary badge-pill">Queued</span><span>&nbsp</span>
-            <span class="badge badge-success badge-pill">In Progress</span><span>&nbsp</span>
-            <span class="badge badge-warning badge-pill">On Hold</span><span>&nbsp</span>
-            <span class="badge badge-danger badge-pill">Done</span><span>&nbsp</span>
+            <span class="badge btn-queued badge-pill">Queued</span><span>&nbsp</span>
+            <span class="badge btn-progress badge-pill">In Progress</span><span>&nbsp</span>
+            <span class="badge btn-hold badge-pill">On Hold</span><span>&nbsp</span>
+            <span class="badge btn-done badge-pill">Done</span><span>&nbsp</span>
           </form>
 
         </div>
@@ -138,261 +158,259 @@
               <tbody>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      <div>ID #: 412489</div>
+                    <button type="button" class="btn btn-queued">
+                      <div>Wafer ID #: 412489</div>
                       <div>Queued</div>
-                      <div>3/20/2018 4:00</div>
+                      <div>ETA: 3/20/2018 4:00</div>
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success">
-                      ID #: 348093<br>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 348093<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 03/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success">
-                      ID #: 342323<br>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 342323<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 03/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning">
-                      ID #: 248383<br>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 248383<br>
                       On Hold<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 248573<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248573<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 03/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 243643<br>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 243643<br>
+                      Done<br>
+                      ETA: 06/02/2018 3:27
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 213243<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 213243<br>
-                      Done<br>
-
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 249763<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 249763<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 242353<br>
                       Queued<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 242353<br>
-                      Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-warning">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 412489<br>
                       On Hold<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       On Hold<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
+                    <button type="button" class="btn btn-hold">
+                      Wafer #: 481931<br>
+                      On Hold<br>
+                      
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
+                    <button type="button" class="btn btn-hold">
+                      Wafer #: 832891<br>
+                      On Hold<br>
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
+                    <button type="button" class="btn btn-done">
+                      Wafer #: 573923<br>
+                      Done<br>
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
@@ -419,261 +437,261 @@
               <tbody>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 412489<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 348093<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 348093<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
-                      ID #: 342323<br>
+                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 342323<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 248343<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248343<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
@@ -700,261 +718,261 @@
               <tbody>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success">
-                      ID #: 348093<br>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 348093<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success">
-                      ID #: 342323<br>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 342323<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248343<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248343<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
@@ -982,261 +1000,261 @@
               <tbody>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-warning">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 412489<br>
                       On Hold<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
-                      ID #: 348093<br>
+                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 348093<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning">
-                      ID #: 342323<br>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 342323<br>
                       On Hold<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248343<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248343<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Done<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </th>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
-                      Done<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
-                      Done<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
@@ -1264,261 +1282,261 @@
               <tbody>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-secondary" disabled style="border-color: white; color:white;">
-                      ID #: 348093<br>
+                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 348093<br>
                       In Progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 342323<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 342323<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 248343<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248343<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 412489<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-warning" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       On Hold<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
                       Done<br>
 
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </th>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-danger" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
-                      Done<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-danger">
-                      ID #: 248043<br>
-                      Done<br>
-
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </th>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
-                      Primary<br>
-                      in progress<br>
-                      3/20/2018 4:00
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" disabled style="border-color: white; color:white;">
-                      ID #: 248043<br>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
                       Queued<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-light" disabled style="border-color: white; color:white;">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
                       Primary<br>
                       in progress<br>
-                      3/20/2018 4:00
+                      ETA: 3/20/2018 4:00
                     </button>
                   </td>
                 </tr>
