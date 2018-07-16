@@ -45,30 +45,15 @@ router.get("/waferStatusExample",function(req,res){
 
   adding.once("value")
     .then(function(snapshot) {
-      var name = snapshot.child("1").val(); // {first:"Ada",last:"Lovelace"}
-      console.log(name)
+      var request = snapshot.child("1").val(); // {first:"Ada",last:"Lovelace"}
+      console.log(request)
       // var firstName = snapshot.child("name/first").val(); // "Ada"
       // var lastName = snapshot.child("name").child("last").val(); // "Lovelace"
       // var age = snapshot.child("age").val(); // null
+      res.render('waferStatusExample', {request: request});
     });
-
-  // adding.on('value', function(snapshot) {
-  //   adding.once('value', function(snapshot) {
-  //     snapshot.forEach(function(childSnapshot) {
-  //       var childKey = childSnapshot.key;
-  //       var childData = childSnapshot.val();
-  //       console.log("hi")
-  //       if (childKey == "requests") {
-  //         test(childData);
-  //       }
-  //     });
-  //   });
-  // });
-
-
-  var hash = req.param('hash');
-  console.log(hash)
-  res.render('waferStatusExample', {hash: hash});
+  // 
+  // res.render('waferStatusExample', {request: request});
 });
 
 
