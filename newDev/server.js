@@ -28,32 +28,34 @@ var router = express.Router();
 app.use(express.static(__dirname + '/public'));
 app.use("/",router);
 
+
 router.get("/",function(req,res){
   res.render("index");
 });
 
+router.post("/getNewRequest", function(req, res) {
+  
+});
 
-function test(val) {
-  console.log(val);
-}
+
+router.get("/requestStatus",function(req,res){
+  res.render("requestStatus");
+});
 
 
-router.get("/waferStatusExample",function(req,res){
+router.get("/requestStatusExample",function(req,res){
+
+  var id = req.param('id');
 
   var adding = firebase.database().ref('/requests');
   console.log(adding);
 
   adding.once("value")
     .then(function(snapshot) {
-      var request = snapshot.child("1").val(); // {first:"Ada",last:"Lovelace"}
-      console.log(request)
-      // var firstName = snapshot.child("name/first").val(); // "Ada"
-      // var lastName = snapshot.child("name").child("last").val(); // "Lovelace"
-      // var age = snapshot.child("age").val(); // null
-      res.render('waferStatusExample', {request: request});
+      var request = snapshot.child(id).val();
+      console.log(request);
+      res.render('requestStatusExample', {request: request});
     });
-  // 
-  // res.render('waferStatusExample', {request: request});
 });
 
 
