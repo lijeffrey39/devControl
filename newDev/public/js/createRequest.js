@@ -17,4 +17,7 @@ window.onload = function() {
             options[i]['selected'] = '';
         }
     }
+    /*$.post( "ajax/test.html", {'test': 'test'}, function( data ) {
+        $( ".result" ).html( data );
+    });*/
 };

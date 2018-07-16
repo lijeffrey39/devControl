@@ -54,3 +54,7 @@ router.get("/waferStatusExample",function(req,res){
 router.get("/viewRequestsByTools",function(req,res){
     res.sendFile(path.join(__dirname, '') + "/viewRequestsByTools.html");
 });
+router.post("/create",function(req,res){
+    res.send('POST success!');
+    console.log(req.params['test'])
+});
