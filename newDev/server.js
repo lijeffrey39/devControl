@@ -108,11 +108,9 @@ router.get("/viewRequests",function(req,res){
         var currArea = currObj["area"];
         var currStatus = currObj["status"];
         currObj["id"] = key;
-
+        
         returnObj["All"][currArea].push(currObj);
         returnObj[currStatus][currArea].push(currObj);
-
-        console.log(returnObj);
       });
 
       console.log(returnObj);
