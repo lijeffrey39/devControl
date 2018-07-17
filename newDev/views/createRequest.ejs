@@ -617,7 +617,17 @@
           toolSet: toolSet,
           status: 'queued'
       };
-      $.post('/getNewRequest', {req: reqJSON}, function(res) {
+
+      console.log(reqJSON);
+
+      // $.ajax({
+      //     url: '/getNewRequest',
+      //     type: 'POST',
+      //     contentType: 'application/json',
+      //     data: {number:1}}
+      // )
+
+      $.post('getNewRequest', {req: reqJSON}, function(res) {
           if(res['ok']){
               alert('Update success!!');
           }

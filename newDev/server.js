@@ -2,6 +2,7 @@ var express = require('express');
 var firebase = require('firebase');
 var app = express();
 var path = require('path');
+var bodyParser = require("body-parser");
 var server = require('http').createServer(app);
 var port = process.env.PORT || 3000;
 
@@ -14,6 +15,15 @@ var config = {
     messagingSenderId: "998440297406"
   };
 firebase.initializeApp(config);
+
+app.use(bodyParser.json({							// support JSON-encoded request bodies
+	strict: true
+}));
+app.use(bodyParser.urlencoded({						// support URL-encoded request bodies
+	extended: true
+}));
+
+
 
 server.listen(port, () => {
   console.log('Server listening at port %d', port);
@@ -38,8 +48,20 @@ router.get("/createRequest",function(req,res){
 });
 
 router.post("/getNewRequest", function(req, res) {
-  console.log(req.body);
-  res.json({ok: true});
+  console.log(req.body.req);
+  var currReq = req.body.req;
+  var ref = firebase.database().ref('/requests');
+
+  ref.once("value")
+    .then(function(snapshot) {
+      var request = snapshot.child("3").val();
+      if (request == null) {
+        console.log("NULL");
+      } else {
+        var requestID = ref.child("3");
+        requestID.set(currReq);
+      }
+    });
 });
 
 
