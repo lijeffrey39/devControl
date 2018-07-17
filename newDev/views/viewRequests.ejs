@@ -18,7 +18,7 @@
 
   <!-- Custom styles for this template -->
   <link href="starter-template.css" rel="stylesheet">
-  <script src ="./js/viewRequest.js"></script>
+  <!--<script src ="./js/viewRequest.js"></script> -->
   <script>
     $(document).ready(function() {
           $("th").each(function() {
@@ -181,10 +181,18 @@
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
                     var id = data["All"][areas[i]][rows].id;
+                    button.setAttribute("buttonId",id);
                     function test() {
-                      window.location.href = "requestStatusExample?id=" + id;
+
+
+                        window.location.href = "requestStatusExample?id=" + id;
                     }
+                    button.onclick = function() {
+                        var id = this.getAttribute('buttonId');
+                        window.location.href = "requestStatusExample?id=" + id;
+                    };
                     button.setAttribute("onclick", "test();");
+
                     if(data["All"][areas[i]][rows].status == "Queued"){
                       button.setAttribute("class","btn btn-queued")
                     }else if(data["All"][areas[i]][rows].status == "In Progress"){
@@ -300,7 +308,7 @@
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
                     button.setAttribute("class","btn btn-progress")
-                    button.setAttribute("onclick", "window.location = \"localhost:3000/requestStatusExample?id=\" + data[\"In Progress\"][areas[i]][rows].id");
+                    //button.setAttribute("onclick", "window.location = \"localhost:3000/requestStatusExample?id=\" + data[\"In Progress\"][areas[i]][rows].id");
                     var div1 = document.createElement("DIV");
                     div1.innerHTML = "Wafer ID #: " + data["In Progress"][areas[i]][rows].waferId;
                     var div2 = document.createElement("DIV");
@@ -407,8 +415,11 @@
                     var cell = row.insertCell(i);
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
-                    button.setAttribute("class","btn btn-done")
-                    button.setAttribute("onclick", "window.location = \"localhost:3000/requestStatusExample?id=\" + data[\"Done\"][areas[i]][rows].id");
+                    button.setAttribute("class","btn btn-done");
+                    button.click(function() {
+                        window.location.href = 'localhost:3000/requestStatusExample?id=' + data["Done"][areas[i]][rows].id;
+                    });
+                    //button.setAttribute("onclick", "window.location = \"localhost:3000/requestStatusExample?id=\" + data[\"Done\"][areas[i]][rows].id");
                     var div1 = document.createElement("DIV");
                     div1.innerHTML = "Wafer ID #: " + data["Done"][areas[i]][rows].waferId;
                     var div2 = document.createElement("DIV");
@@ -425,6 +436,14 @@
                 table.appendChild(row);
               }
               navdone.appendChild(table);
+
+
+              $('button').each(function() {
+                  $(this).click(function() {
+                      var id = $(this).attr('buttonid');
+                      window.location.href = 'requestStatusExample?id=' + id;
+                  });
+              });
             </script>
 
         </div>
