@@ -47,6 +47,13 @@ router.get("/createRequest",function(req,res){
   res.render("createRequest");
 });
 
+router.get("/requestStatus",function(req,res){
+  res.render("requestStatus");
+});
+
+router.get("/editRequest",function(req,res){
+  res.render("editRequest");
+});
 
 function generateID() {
   var text = "";
@@ -79,21 +86,49 @@ router.post("/getNewRequest", function(req, res) {
 });
 
 
-router.get("/requestStatus",function(req,res){
-  res.render("requestStatus");
-});
-
 router.get("/viewRequests",function(req,res){
-  res.render("viewRequests");
+
+  var adding = firebase.database().ref('/');
+  adding.once("value")
+    .then(function(snapshot) {
+      var request = snapshot.child("requests").val();
+      console.log(request);
+
+      returnObj = {"All": {}, "Queued": {}, "In Progress": {}, "On Hold": {}, "Done": {}};
+      areaObj = {"IM": [], "Anelva": [], "Photo": [], "MR": [], "Metro": [], "Insp": [], "CMP": [], "NiFe/Etch": [], "Metals": []};
+
+      Object.keys(returnObj).forEach(function(key) {
+        returnObj[key] = JSON.parse(JSON.stringify(areaObj));
+      });
+
+      Object.keys(request).forEach(function(key) {
+        // console.log(key, request[key]);
+        console.log(returnObj);
+        var currObj = request[key];
+        var currArea = currObj["area"];
+        var currStatus = currObj["status"];
+        currObj["id"] = key;
+
+        returnObj["All"][currArea].push(currObj);
+        returnObj[currStatus][currArea].push(currObj);
+
+        console.log(returnObj);
+      });
+
+      console.log(returnObj);
+
+      res.render("viewRequests",  {returnObj: returnObj});
+
+    });
+
+  // res.render("viewRequests");
 });
 
 
 router.get("/requestStatusExample",function(req,res){
 
   var id = req.param('id');
-
   var adding = firebase.database().ref('/requests');
-  console.log(adding);
 
   adding.once("value")
     .then(function(snapshot) {
@@ -103,15 +138,6 @@ router.get("/requestStatusExample",function(req,res){
     });
 });
 
-
-//
-// router.get("/createRequest",function(req,res){
-//   res.sendFile(path.join(__dirname, '') + "/createRequest.html");
-// });
-//
-// router.get("/editRequest",function(req,res){
-//   res.sendFile(path.join(__dirname, '') + "/editRequest.html");
-// });
 //
 // router.get("/exampleEditRequest",function(req,res){
 //   res.sendFile(path.join(__dirname, '') + "/exampleEditRequest.html");
