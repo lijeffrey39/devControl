@@ -33,8 +33,13 @@ router.get("/",function(req,res){
   res.render("index");
 });
 
+router.get("/createRequest",function(req,res){
+  res.render("createRequest");
+});
+
 router.post("/getNewRequest", function(req, res) {
-  
+  console.log(req.body);
+  res.json({ok: true});
 });
 
 
@@ -54,7 +59,7 @@ router.get("/requestStatusExample",function(req,res){
     .then(function(snapshot) {
       var request = snapshot.child(id).val();
       console.log(request);
-      res.render('requestStatusExample', {request: request});
+      res.render('requestStatusExample', {request: request, id: id});
     });
 });
 
