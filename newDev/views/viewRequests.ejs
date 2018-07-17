@@ -144,6 +144,11 @@
               status = ["All", "Queued", "In Progress", "On Hold", "Done"];
               areas = ["IM", "Anelva", "Photo", "MR", "Metro", "Insp", "CMP", "NiFe/Etch", "Metals"];
 
+              function formatTimetoDate(mill){
+                var date = new Date(mill);
+                return alert(date.toString());
+              }
+
               function contentTable(parent_id, status){
                 var nav = document.getElementById(parent_id);
                 var table = document.createElement("TABLE");
@@ -197,7 +202,7 @@
                       var div2 = document.createElement("DIV");
                       div2.innerHTML = data[status][areas[i]][rows].status;
                       var div3 = document.createElement("DIV");
-                      div3.innerHTML = "ETA: " + data[status][areas[i]][rows].date;
+                      div3.innerHTML = "ETA: " + formatTimetoDate(data[status][areas[i]][rows].date);
                       button.appendChild(div1);
                       button.appendChild(div2);
                       button.appendChild(div3);
