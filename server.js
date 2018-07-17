@@ -59,6 +59,10 @@ router.get("/exampleEditRequest",function(req,res){
   res.render("exampleEditRequest");
 });
 
+router.get("/viewRequestsByTool",function(req,res){
+  res.render("viewRequestsByTool");
+});
+
 function generateID() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -107,7 +111,6 @@ router.get("/viewRequests",function(req,res){
 
       Object.keys(request).forEach(function(key) {
         // console.log(key, request[key]);
-        console.log(returnObj);
         var currObj = request[key];
         var currArea = currObj["area"];
         var currStatus = currObj["status"];
@@ -116,8 +119,6 @@ router.get("/viewRequests",function(req,res){
         returnObj["All"][currArea].push(currObj);
         returnObj[currStatus][currArea].push(currObj);
       });
-
-      console.log(returnObj);
 
       res.render("viewRequests",  {returnObj: returnObj});
 
