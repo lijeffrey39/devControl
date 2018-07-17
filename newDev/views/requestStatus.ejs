@@ -96,14 +96,9 @@
           console.log("incomplete");
           return;
         } else {
-          if (!jQuery.isNumeric(inputID)) {
-            console.log("not numeric")
-            return;
-          } else {
-            url = 'localhost:3000/requestStatusExample?id=' + inputID;
-            console.log(url);
-            window.location.href = 'requestStatusExample?id=' + inputID;
-          }
+          url = 'localhost:3000/requestStatusExample?id=' + inputID;
+          console.log(url);
+          window.location.href = 'requestStatusExample?id=' + inputID;
         }
 
       }

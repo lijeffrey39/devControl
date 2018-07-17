@@ -47,6 +47,17 @@ router.get("/createRequest",function(req,res){
   res.render("createRequest");
 });
 
+
+function generateID() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 7; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
 router.post("/getNewRequest", function(req, res) {
   console.log(req.body.req);
   var currReq = req.body.req;
@@ -54,19 +65,26 @@ router.post("/getNewRequest", function(req, res) {
 
   ref.once("value")
     .then(function(snapshot) {
-      var request = snapshot.child("3").val();
-      if (request == null) {
-        console.log("NULL");
-      } else {
-        var requestID = ref.child("3");
-        requestID.set(currReq);
+
+      var newID = generateID();
+      var request = snapshot.child(newID).val();
+      while(request != null) {
+        newID = generateID();
+        request = snapshot.child(newID).val();
       }
+
+      var requestID = ref.child(newID);
+      requestID.set(currReq);
     });
 });
 
 
 router.get("/requestStatus",function(req,res){
   res.render("requestStatus");
+});
+
+router.get("/viewRequests",function(req,res){
+  res.render("viewRequests");
 });
 
 

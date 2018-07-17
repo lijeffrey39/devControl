@@ -139,10 +139,11 @@
 
     <script>
       var request = <%-JSON.stringify(request)%>;
+      var requestID = <%-JSON.stringify(id)%>;
       console.log(request)
       if (request != null) {
         area = request.requestArea;
-        requestID = request.id;
+        // requestID = request.id;
         document.getElementById("requestID").innerHTML = "Request ID#: " + requestID;
         document.getElementById("requestArea").placeholder = area;
       } else {

@@ -1,0 +1,1562 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Starter Template for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+
+
+  <!-- Custom styles for this template -->
+  <link href="starter-template.css" rel="stylesheet">
+  <script src ="./js/viewRequest.js"></script>
+  <script>
+    $(document).ready(function() {
+          $(".table button").click(
+              function() {
+                  window.location.href = "http://devcontrolcenter.herokuapp.com/waferStatusExample";
+              }
+          );
+          $("th").each(function() {
+              var head = $(this);
+              head.mouseover(function() {
+                  head.css('background-color', '#ccc');
+              });
+              head.mouseout(function() {
+                  head.css('background-color', '#e9ecef');
+              });
+              head.click(function () {
+                  window.location.href = 'http://devcontrolcenter.herokuapp.com/viewRequestsByTools';
+              });
+          });
+        }
+    );
+  </script>
+
+  <style>
+    .table td, .table th {
+      padding: 0rem;
+      vertical-align: top;
+    }
+    .table th {
+      text-align: center;
+    }
+    #tab_backup th{
+      background-color: #ccc;
+    }
+    button {
+      height: 86px;
+      width: 176.125px;
+      margin: 1px;
+    }
+    body {
+      padding-top: 5rem;
+    }
+    .starter-template {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .btn-done {
+      background: lightcoral;
+      border-color: lightcoral;
+      color: white;
+    }
+    .btn-queued {
+      background: #bbb;
+      border-color: #bbb;
+      color: white;
+    }
+    .btn-progress {
+      background: lightgreen;
+      border-color: lightgreen;
+    }
+    .btn-hold {
+      background: lightsalmon;
+      border-color: lightsalmon;
+      color: white;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="https://devcontrolcenter.herokuapp.com/">Dev Control Center</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/createRequest">Create Request</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/editRequest">Edit Request</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/viewRequests">View Requests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/waferStatus">Request Status</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="starter-template">
+    <h1 style = "font-weight: 300"> View Requests</h1>
+    <br>
+    <div class = "container" >
+    <div class = "row">
+      <div class = "col-s-12">
+        <div class="nav nav-tabs " id="nav-tab" role="tablist">
+          <a id = "dinexString" class="nav-item nav-link active" id="nav-dinex-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
+          <a class="nav-item nav-link" id="nav-queued-tab" data-toggle="tab" href="#nav-queued" role="tab" aria-controls="nav-queued" aria-selected="false">Queued</a>
+          <a class="nav-item nav-link" id="nav-in_progress-tab" data-toggle="tab" href="#nav-in_progress" role="tab" aria-controls="nav-in_progress" aria-selected="false">In Progress</a>
+          <a class="nav-item nav-link" id="nav-hold-tab" data-toggle="tab" href="#nav-hold" role="tab" aria-controls="nav-hold" aria-selected="false">On hold</a>
+          <a class="nav-item nav-link" id="nav-done-tab" data-toggle="tab" href="#nav-done" role="tab" aria-controls="nav-done" aria-selected="false">Done</a>
+
+          <form class="form-inline">
+            <span>&nbsp</span>
+            <span class="badge btn-queued badge-pill">Queued</span><span>&nbsp</span>
+            <span class="badge btn-progress badge-pill">In Progress</span><span>&nbsp</span>
+            <span class="badge btn-hold badge-pill">On Hold</span><span>&nbsp</span>
+            <span class="badge btn-done badge-pill">Done</span><span>&nbsp</span>
+          </form>
+
+        </div>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+            <table id="tab_all" class="table table-borderless" >
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">IM</th>
+                  <th scope="col">Anelva</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">MR</th>
+                  <th scope="col">Metro</th>
+                  <th scope="col">Insp</th>
+                  <th scope="col">CMP</th>
+                  <th scope="col">NiFe/Etch</th>
+                  <th scope="col">Metals</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      <div>Wafer ID #: 412489</div>
+                      <div>Queued</div>
+                      <div>ETA: 3/20/2018 4:00</div>
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 348093<br>
+                      In Progress<br>
+                      ETA: 03/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 342323<br>
+                      In Progress<br>
+                      ETA: 03/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 248383<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248573<br>
+                      Queued<br>
+                      ETA: 03/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 243643<br>
+                      Done<br>
+                      ETA: 06/02/2018 3:27
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 213243<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 249763<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 242353<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 412489<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer #: 481931<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer #: 832891<br>
+                      On Hold<br>
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer #: 573923<br>
+                      Done<br>
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <div class="tab-pane fade" id="nav-queued" role="tabpanel" aria-labelledby="nav-queued-tab">
+
+            <table id="tab_queued" class="table table-borderless" >
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">IM</th>
+                  <th scope="col">Anelva</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">MR</th>
+                  <th scope="col">Metro</th>
+                  <th scope="col">Insp</th>
+                  <th scope="col">CMP</th>
+                  <th scope="col">NiFe/Etch</th>
+                  <th scope="col">Metals</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 412489<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 348093<br>
+                      In Progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 342323<br>
+                      In Progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248343<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tab-pane fade" id="nav-in_progress" role="tabpanel" aria-labelledby="nav-in_progress-tab">
+
+            <table id="tab_in_progress" class="table table-borderless">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">IM</th>
+                  <th scope="col">Anelva</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">MR</th>
+                  <th scope="col">Metro</th>
+                  <th scope="col">Insp</th>
+                  <th scope="col">CMP</th>
+                  <th scope="col">NiFe/Etch</th>
+                  <th scope="col">Metals</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 348093<br>
+                      In Progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress">
+                      Wafer ID #: 342323<br>
+                      In Progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248343<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <div class="tab-pane fade" id="nav-hold" role="tabpanel" aria-labelledby="nav-hold-tab">
+
+            <table id="tab_hold" class="table table-borderless" >
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">IM</th>
+                  <th scope="col">Anelva</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">MR</th>
+                  <th scope="col">Metro</th>
+                  <th scope="col">Insp</th>
+                  <th scope="col">CMP</th>
+                  <th scope="col">NiFe/Etch</th>
+                  <th scope="col">Metals</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 412489<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 348093<br>
+                      In Progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 342323<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248343<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <div class="tab-pane fade" id="nav-done" role="tabpanel" aria-labelledby="nav-done-tab">
+
+            <table id="tab_done" class="table table-borderless " >
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">IM</th>
+                  <th scope="col">Anelva</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">MR</th>
+                  <th scope="col">Metro</th>
+                  <th scope="col">Insp</th>
+                  <th scope="col">CMP</th>
+                  <th scope="col">NiFe/Etch</th>
+                  <th scope="col">Metals</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-queued" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 348093<br>
+                      In Progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 342323<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248343<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 412489<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-hold" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      On Hold<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-done">
+                      Wafer ID #: 248043<br>
+                      Done<br>
+
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </th>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-progress" disabled style="border-color: white; color:white; background:white">
+                      Wafer ID #: 248043<br>
+                      Queued<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light" disabled style="border-color: white; color:white; background:white">
+                      Primary<br>
+                      in progress<br>
+                      ETA: 3/20/2018 4:00
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</body>
+</html>
