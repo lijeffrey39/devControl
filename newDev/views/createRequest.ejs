@@ -590,12 +590,9 @@
           batchId = '',
           toolSet = '';
 
-      $('option').each(function () {
-          if ($(this).attr('selected') == 'selected') {
-              area = $(this).text();
-          }
-      });
 
+      
+      area = $('#area option:selected').text();
       waferId = $('#id').val();
       operationNumber = $('number').val();
       requestor = $('#requestor').val();
@@ -631,7 +628,7 @@
           if(res['ok']){
               alert('Update success!!');
           }
-      });
+      }, 'json');
   });
     </script>
 
