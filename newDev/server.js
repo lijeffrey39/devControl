@@ -55,6 +55,10 @@ router.get("/editRequest",function(req,res){
   res.render("editRequest");
 });
 
+router.get("/exampleEditRequest",function(req,res){
+  res.render("exampleEditRequest");
+});
+
 function generateID() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -108,7 +112,7 @@ router.get("/viewRequests",function(req,res){
         var currArea = currObj["area"];
         var currStatus = currObj["status"];
         currObj["id"] = key;
-        
+
         returnObj["All"][currArea].push(currObj);
         returnObj[currStatus][currArea].push(currObj);
       });
@@ -135,32 +139,3 @@ router.get("/requestStatusExample",function(req,res){
       res.render('requestStatusExample', {request: request, id: id});
     });
 });
-
-//
-// router.get("/exampleEditRequest",function(req,res){
-//   res.sendFile(path.join(__dirname, '') + "/exampleEditRequest.html");
-// });
-//
-// router.get("/form",function(req,res){
-//   res.sendFile(path.join(__dirname, '') + "/form.html");
-// });
-//
-// router.get("/requestList",function(req,res){
-//   res.sendFile(path.join(__dirname, '') + "/requestList.html");
-// });
-//
-// router.get("/quests",function(req,res){
-//   res.sendFile(path.join(__dirname, '') + "/viewRequests.html");
-// });
-//
-// router.get("/waferStatus",function(req,res){
-//   res.sendFile(path.join(__dirname, '') + "/waferStatus.html");
-// });
-//
-// router.get("/waferStatusExample",function(req,res){
-//     res.sendFile(path.join(__dirname, '') + "/waferStatusExample.html");
-// });
-//
-// router.get("/viewRequestsByTools",function(req,res){
-//     res.sendFile(path.join(__dirname, '') + "/viewRequestsByTools.html");
-// });
