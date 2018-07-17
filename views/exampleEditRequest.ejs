@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script>
+      $(document).ready(function () {
+          var comment = $("#after_com");
+          $("#add_com").click(function() {
+              comment.after('<div class="form-group row"><label for="inputPassword"' +
+                  ' class="col-sm-3 col-form-label">Comment</label>' +
+                  '<div class="col-sm-9"><textarea class="form-control" rows="3" value = "Comment example">' +
+                  '</textarea></div></div>');
+          });
+          $("#btn_update").click(function() {
+              alert("Change success!");
+              window.location.href = './';
+          });
+      });
+    </script>
+
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="https://devcontrolcenter.herokuapp.com/">Dev Control Center</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/createRequest">Create Request</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/editRequest">Edit Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/viewRequests">View Requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/requestStatus">Request Status</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+      <div class="starter-template">
+        <h1 style = "font-weight: 300">Updating ID#: 123456</h1>
+        <br>
+        <!-- <p class="lead">Current Sales</p> -->
+        <div class="container">
+          <div class="row">
+
+            <div class="col">
+            </div>
+
+            <div class="col-sm-10 col-md-8 col-lg-6">
+              <form>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Date Requested</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="03/23/3018, 2:43 PM"  style = "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 91.7%" readonly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Request Area</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="Photo" readonly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Requestor</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="Integration Eng" readonly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Owner</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="Photo Tech" readonly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">ETA</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="03/27/3018, 5:30 PM" readonly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label" >Status</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="area" placeholder="Ex. Photo">
+                      <option selected="selected">Queued</option>
+                      <option value="1">Hold</option>
+                      <option value="2">In Progress</option>
+                      <option value="3">Completed</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="request" class="col-sm-3 col-form-label">Request</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="request" rows="3" value = "Request example">Expose wafer SVT on Canon tool with recipe 117. Notify when complete. </textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="customPhoto" class="col-sm-3 col-form-label">Upload Photos</label>
+                  <div class="col-sm-9">
+                    <input type="file" class="custom-file-input" id="customPhoto">
+                    <label class="custom-file-label" for="customPhoto"style = " position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 93%;"><a style = "margin-right: 80px;">Choose File</a></label>
+                  </div>
+                </div>
+                <div class="form-group row" id="before_com">
+                  <label for="customFile" class="col-sm-3 col-form-label">Upload Documents</label>
+                  <div class="col-sm-9">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile"style = " position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 93%;"><a style = "margin-right: 80px;">Choose File</a></label>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group row" id="after_com">
+                  <button type="button" class="btn rounded btn-success col-sm-3" id="add_com">+Comment</button>
+                </div>
+
+                <br>
+                <button type="button" class="btn btn-success btn-lg sharing" id="btn_update">Update Request</button>
+                <br>
+                <br>
+                <p class="text-secondary"><a href="https://devcontrolcenter.herokuapp.com/editRequest" class="text-secondary" style = "font-size: 12px">Edit my Request</a></p>
+              </form>
+
+
+            </div>
+
+
+            <div class="col">
+            </div>
+
+
+          </div>
+        </div>
+        <br>
+
+      </div>
+
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  </body>
+</html>
