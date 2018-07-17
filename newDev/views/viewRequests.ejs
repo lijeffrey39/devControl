@@ -21,11 +21,7 @@
   <script src ="./js/viewRequest.js"></script>
   <script>
     $(document).ready(function() {
-          $(".table button").click(
-              function() {
-                  window.location.href = "http://devcontrolcenter.herokuapp.com/waferStatusExample";
-              }
-          );
+
           $("th").each(function() {
               var head = $(this);
               head.mouseover(function() {
@@ -178,12 +174,14 @@
                     button.setAttribute("class","btn btn-light");
                     button.setAttribute("style","border-color: white; color:white; background:white");
                     button.disabled = true;
+
                     cell.appendChild(button);
                     blanks++;
                   }else{
                     var cell = row.insertCell(i);
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
+                    button.setAttribute("onclick", "localhost:3000/requestStatusExample?id=" + data["All"][areas[i]][rows].id);
                     if(data["All"][areas[i]][rows].status == "Queued"){
                       button.setAttribute("class","btn btn-queued")
                     }else if(data["All"][areas[i]][rows].status == "In Progress"){
@@ -245,6 +243,7 @@
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
                     button.setAttribute("class","btn btn-queued")
+                    button.setAttribute("onclick", "localhost:3000/requestStatusExample?id=" + data["Queued"][areas[i]][rows].id);
                     var div1 = document.createElement("DIV");
                     div1.innerHTML = "Wafer ID #: " + data["Queued"][areas[i]][rows].waferId;
                     var div2 = document.createElement("DIV");
@@ -298,6 +297,7 @@
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
                     button.setAttribute("class","btn btn-progress")
+                    button.setAttribute("onclick", "localhost:3000/requestStatusExample?id=" + data["In Progress"][areas[i]][rows].id);
                     var div1 = document.createElement("DIV");
                     div1.innerHTML = "Wafer ID #: " + data["In Progress"][areas[i]][rows].waferId;
                     var div2 = document.createElement("DIV");
@@ -351,6 +351,7 @@
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
                     button.setAttribute("class","btn btn-hold")
+                    button.setAttribute("onclick", "localhost:3000/requestStatusExample?id=" + data["On Hold"][areas[i]][rows].id);
                     var div1 = document.createElement("DIV");
                     div1.innerHTML = "Wafer ID #: " + data["On Hold"][areas[i]][rows].waferId;
                     var div2 = document.createElement("DIV");
@@ -404,6 +405,7 @@
                     var button = document.createElement("BUTTON");
                     button.setAttribute("type","button");
                     button.setAttribute("class","btn btn-done")
+                    button.setAttribute("onclick", "localhost:3000/requestStatusExample?id=" + data["Done"][areas[i]][rows].id);
                     var div1 = document.createElement("DIV");
                     div1.innerHTML = "Wafer ID #: " + data["Done"][areas[i]][rows].waferId;
                     var div2 = document.createElement("DIV");
