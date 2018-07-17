@@ -620,7 +620,7 @@
           toolSet: toolSet,
           status: 'queued'
       };
-      $.post('/getNewRequest', reqJSON, function(req, res) {
+      $.post('/getNewRequest', reqJSON, function(res) {
           if(res['ok']){
               alert('Update success!!');
           }
