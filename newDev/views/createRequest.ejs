@@ -578,7 +578,10 @@
       x[i].parentNode.removeChild(x[i]);
     }
   }
-
+  function getRandomStatus() {
+    var status = ['Queued', 'In Progress', 'Done', 'On Hold'];
+    return status[Math.floor(Math.random() * Math.floor(4))];
+  }
 
   $('#post').click(function () {
       var area = '',
@@ -590,11 +593,9 @@
           batchId = '',
           toolSet = '';
 
-
-
       area = $('#area option:selected').text();
       waferId = $('#id').val();
-      operationNumber = $('number').val();
+      operationNumber = $('#number').val();
       requestor = $('#requestor').val();
       owner = $('#owner').val();
       request = $('#request').val();
@@ -602,33 +603,45 @@
       toolSet = $('#toolSet').val();
       batchId = $('#batchId').val();
 
-      var reqJSON = {
-          batchId: batchId,
-          area: area,
-          waferId: waferId,
-          operationNumber: operationNumber,
-          requestor: requestor,
-          owner: owner,
-          request: request,
-          date: date,
-          toolSet: toolSet,
-          status: 'queued'
-      };
+      var checkRequestor = names.indexOf(requestor) < 0;
+      var checkOwner = names.indexOf(owner) < 0;
+      
 
-      console.log(reqJSON);
+      if(area === 'Choose...') alert('Please Choose Area!!');
+      else if(waferId === '') alert('Please Enter Wafer ID!!');
+      else if(operationNumber === '') alert('Please Enter operation number!!');
+      else if(requestor === '') alert('Please Enter requestor!!');
+      else if(owner === '') alert('Please Enter owner!!');
+      else if(request === '') alert('Please Enter request content!!');
+      else if(toolSet === '') alert('Please Enter toolSet!!');
+      else if(batchId === '') alert('Please Enter batch ID!!');
+      else if(checkRequestor) alert('Requestor name are not in name list!!');
+      else if(checkOwner) alert('Owner name are not in name list!!');
+      else {
+        var status = getRandomStatus();
+        var reqJSON = {
+              batchId: batchId,
+              area: area,
+              waferId: waferId,
+              operationNumber: operationNumber,
+              requestor: requestor,
+              owner: owner,
+              request: request,
+              date: date,
+              toolSet: toolSet,
+              status: status
+        };
 
-      // $.ajax({
-      //     url: '/getNewRequest',
-      //     type: 'POST',
-      //     contentType: 'application/json',
-      //     data: {number:1}}
-      // )
+        //console.log(reqJSON);
 
-      $.post('getNewRequest', {req: reqJSON}, function(res) {
-          if(res['ok']){
-              alert('Update success!!');
-          }
-      }, 'json');
+        $.post('getNewRequest', {req: reqJSON}, function(res) {
+            if(res['ok']){
+                alert('Update success!!');
+            }
+        }, 'json').done(function() {
+          console.log(reqJSON);
+        });
+      }
   });
     </script>
 
