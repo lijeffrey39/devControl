@@ -182,16 +182,11 @@
                     button.setAttribute("type","button");
                     var id = data["All"][areas[i]][rows].id;
                     button.setAttribute("buttonId",id);
-                    function test() {
-
-
-                        window.location.href = "requestStatusExample?id=" + id;
-                    }
                     button.onclick = function() {
                         var id = this.getAttribute('buttonId');
                         window.location.href = "requestStatusExample?id=" + id;
                     };
-                    button.setAttribute("onclick", "test();");
+                    //button.setAttribute("onclick", "test();");
 
                     if(data["All"][areas[i]][rows].status == "Queued"){
                       button.setAttribute("class","btn btn-queued")
