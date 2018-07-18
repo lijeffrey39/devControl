@@ -119,6 +119,12 @@
                   </div>
                 </div>
                 <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Tool Set</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="toolSet" placeholder=""></select>
+                  </div>        
+                </div>
+                <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Wafer Id</label>
                   <div class="col-sm-9">
                     <input class="form-control" id="id" placeholder="">
@@ -128,12 +134,6 @@
                   <label for="inputPassword" class="col-sm-3 col-form-label">Batch Id</label>
                   <div class="col-sm-9">
                     <input class="form-control" id="batchId" placeholder="">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-3 col-form-label">Tool Set</label>
-                  <div class="col-sm-9">
-                    <input class="form-control" id="toolSet" placeholder="">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -202,7 +202,6 @@
       </div>
 
     <script>
-
   var names = [ 'Deetta Jahn',
   'Shanelle Strack',
   'Maryann Laflamme',
@@ -306,44 +305,35 @@
   'Kevin Zeng',
   'Stefanie Lau',
   'Huanze Shu' ];
-
   /*stored as an array of of size 2 arrays with first and last name*/
   var splitnames = [];
   for(i = 0; i < names.length; i++){
     splitnames.push(names[i].split(" "));
   }
-
   var openFile = function(event) {
     var input = event.target;
-
     var reader = new FileReader();
     reader.onload = function(){
        var text = reader.result;
     };
     reader.readAsText(input.files[0]);
   };
-
   var requestor = document.getElementById("requestor");  //requestor input field
   requestor.addEventListener("input", function(e) {
-
      /*reset*/
      close_all_requestor();
-
      /*creates main tab*/
      var main_tab = document.createElement("DIV");
      this.parentNode.appendChild(main_tab);
      main_tab.setAttribute("class", "requestor_list_main");
-
      for (i = 0; i < names.length; i++) {
        /*matches first last or full name and checks if input is not empty*/
        if((splitnames[i][0].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() || splitnames[i][1].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() || (names[i].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() && requestor.value.includes(" "))) && requestor.value != ""){
-
          /*creates a name tab element*/
          var tab = document.createElement("DIV");
          tab.setAttribute("class", "requestor_list");
          tab.setAttribute("onmouseover", "requestor_select(this)");
          tab.setAttribute("onmouseout", "requestor_unselect(this)");
-
          /*full name*/
          if(names[i].substr(0,requestor.value.length).toUpperCase() == requestor.value.toUpperCase() && requestor.value.includes(" ")){
           tab.innerHTML = "<strong>" + names[i].substr(0, requestor.value.length) + "</strong>";
@@ -358,33 +348,27 @@
           tab.innerHTML += "<strong>" + splitnames[i][1].substr(0, requestor.value.length) + "</strong>";
           tab.innerHTML += splitnames[i][1].substr(requestor.value.length);
          }
-
          /*adds name to input field when clicked on*/
          tab.innerHTML += "<input type='hidden' value='" + names[i] + "'>";
          tab.addEventListener("click", function(e) {
               requestor.value = this.getElementsByTagName("input")[0].value;
               close_all_requestor();
          });
-
          /*add name tab to main tab*/
          main_tab.appendChild(tab);
        }
      }
   });
-
   var requestor_keyboard_select_index = -1;
   requestor.addEventListener("keydown", function(e) {
   var mouse_index_element = null; //element mouse is over
-
     /*set the mouse elemet to a normal element to prevent counting error, the mouse elemenent's class is restored at the end of the function if it does not become the element selected by the arrowkeys*/
     if(document.getElementsByClassName("requestor_list_mouse_select").length != 0){
       mouse_index_element = document.getElementsByClassName("requestor_list_mouse_select")[0];
       mouse_index_element.setAttribute("class", "requestor_list");
     }
-
     if (e.which == 40){//down
       if(requestor_keyboard_select_index >= 0 && requestor_keyboard_select_index <  document.getElementsByClassName("requestor_list").length){//move element selected by keyboard to the one below,  does nothing if already the last element on the list
-
         /*previously selected element is set to normal list element*/
         document.getElementsByClassName("requestor_list_keyboard_select")[0].setAttribute("class", "requestor_list");
         requestor_keyboard_select_index++;
@@ -423,28 +407,22 @@
       mouse_index_element.setAttribute("class", "requestor_list_mouse_select");
     }
   });
-
   var owner = document.getElementById("owner"); //owner input field
   owner.addEventListener("input", function(e) {
-
      /*resets*/
      close_all_owner();
-
      /*creates main tab*/
      var main_tab = document.createElement("DIV");
      this.parentNode.appendChild(main_tab);
      main_tab.setAttribute("class", "owner_list_main");
-
      for (i = 0; i < names.length; i++) {
        /*matches first last or full name and checks if input is not empty*/
        if((splitnames[i][0].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() || splitnames[i][1].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() || (names[i].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() && owner.value.includes(" "))) && owner.value != ""){
-
          /*creates a name tab element*/
          var tab = document.createElement("DIV");
          tab.setAttribute("class", "owner_list");
          tab.setAttribute("onmouseover", "owner_select(this)");
          tab.setAttribute("onmouseout", "owner_unselect(this)");
-
          /*full name*/
          if(names[i].substr(0,owner.value.length).toUpperCase() == owner.value.toUpperCase() && owner.value.includes(" ")){
           tab.innerHTML = "<strong>" + names[i].substr(0, owner.value.length) + "</strong>";
@@ -459,24 +437,20 @@
           tab.innerHTML += "<strong>" + splitnames[i][1].substr(0, owner.value.length) + "</strong>";
           tab.innerHTML += splitnames[i][1].substr(owner.value.length);
          }
-
          /*adds name to input field when clicked on*/
          tab.innerHTML += "<input type='hidden' value='" + names[i] + "'>";
          tab.addEventListener("click", function(e) {
               owner.value = this.getElementsByTagName("input")[0].value;
               close_all_owner();
          });
-
          /*add name tab to main tab*/
          main_tab.appendChild(tab);
        }
      }
   });
-
   var owner_keyboard_select_index = -1;
   owner.addEventListener("keydown", function(e) {
     var mouse_index_element = null;
-
     /*set the mouse elemet to a normal element to prevent counting error, the mouse elemenent's class is restored at the end of the function if it does not become the element selected by the arrowkeys*/
     if(document.getElementsByClassName("owner_list_mouse_select").length != 0){
       mouse_index_element = document.getElementsByClassName("owner_list_mouse_select")[0];
@@ -484,7 +458,6 @@
     }
     if (e.which == 40){//down
       if(owner_keyboard_select_index >= 0 && owner_keyboard_select_index <  document.getElementsByClassName("owner_list").length){//move element selected by keyboard to the one below,  does nothing if already the last element on the list
-
         /*previously selected element is set to normal list element*/
         document.getElementsByClassName("owner_list_keyboard_select")[0].setAttribute("class", "owner_list");
         owner_keyboard_select_index++;
@@ -523,7 +496,6 @@
       mouse_index_element.setAttribute("class", "owner_list_mouse_select");
     }
   });
-
   /*closes and resets autocomplete field if clicked off*/
   document.addEventListener("click", function (e) {
     close_all_owner();
@@ -531,19 +503,16 @@
     owner_keyboard_select_index = -1;
     requestor_keyboard_select_index = -1;
   });
-
   function requestor_select(x){
     if(x.className != "requestor_list_keyboard_select"){
       x.setAttribute("class", "requestor_list_mouse_select");
     }
   }
-
   function requestor_unselect(x){
     if(x.className != "requestor_list_keyboard_select"){
       x.setAttribute("class", "requestor_list");
     }
   }
-
   function close_all_owner(){
     close("owner_list");
     close("owner_list_mouse_select");
@@ -552,37 +521,90 @@
     owner_keyboard_select_index = -1;
     requestor_keyboard_select_index = -1;
   }
-
   function owner_select(x){
     if(x.className != "owner_list_keyboard_select"){
       x.setAttribute("class", "owner_list_mouse_select");
     }
   }
-
   function owner_unselect(x){
     if(x.className != "owner_list_keyboard_select"){
       x.setAttribute("class", "owner_list");
     }
   }
-
   function close_all_requestor(){
     close("requestor_list");
     close("requestor_list_mouse_select");
     close("requestor_list_keyboard_select");
     close("requestor_list_main");
   }
-
   function close(name){
     var x = document.getElementsByClassName(name);
     for (var i = 0; i < x.length; i++) {
       x[i].parentNode.removeChild(x[i]);
     }
   }
+
+  var area = document.getElementById("area");
+  var area_value = "Choose...";
+  area.addEventListener("click", function(){
+    area_value = $('#area option:selected').text();
+    updateToolSetOptions();
+  });
+  
+  var toolSet = document.getElementById("toolSet");
+  var default_option = document.createElement("option");
+  default_option.text = "Please Select An Request Area First";
+  default_option.setAttribute("class","toolSetOptions");
+  toolSet.add(default_option); 
+
+  function updateToolSetOptions(){
+    close("toolSetOptions");
+    var options = [];
+    if(area_value == "Choose..."){
+      options = ["Please Select An Request Area First"];
+    }else if(area_value == "IM"){
+      options = ["5 Zone - 1","5 Zone - 2","Ash","Nexus","PVDi","RuCVD","Ion Scan","SiN/LP"];
+    }else if(area_value == "Anelva"){
+      options = [];
+    }else if(area_value == "Photo"){
+      options = ["2x","5x","FSI","Hard Bake","HMDS Bake","Nano","Sorter","Stabilizter","SUSS"];
+    }else if(area_value == "MR"){
+      options = ["Anelva","DS","Futek","IBDS","Cluster","Measure","XRF/ResMap","PVD Aisle 19", "PVD Aisle 24"];
+    }else if(area_value == "Metro"){
+      options = ["AIT","Archer","Atlas","Complus","DUV","SCD","Verity"];
+    }else if(area_value == "Insp"){
+      options = ["Inspection 2", "Inspection E", "Inspection L"];
+    }else if(area_value == "CMP"){
+      options = ["AIT","CMP","DNS","Ebara","HRP","Inspection/Nano","SurfScan"];
+    }else if(area_value == "Nife/Etch"){
+      options = ["Ash","EQ Strip", "Inspection", "Mag Bake", "Mag Initialization", "MXR", "Plating", "Plating 45/55", "Plating 80/20", "Tencor", "Tosetz"];
+    }else if(area_value == "Metals"){
+      options = [];
+    }
+
+    for(i = 0; i < options.length; i++){
+      var toolSetOption = document.createElement("option");
+      toolSetOption.setAttribute("class","toolSetOptions");
+      toolSetOption.text = options[i];
+      toolSet.add(toolSetOption);
+    }
+    if(area_value != "Choose..."){
+      var otherOption = document.createElement("option");
+      otherOption.setAttribute("class","toolSetOptions");
+      otherOption.text = "other";
+      toolSet.add(otherOption);
+    }
+  }
+
+
+
+
+
+
   function getRandomStatus() {
     var status = ['Queued', 'In Progress', 'Done', 'On Hold'];
     return status[Math.floor(Math.random() * Math.floor(4))];
   }
-
   $('#post').click(function () {
       var area = '',
           waferId = '',
@@ -592,7 +614,6 @@
           request = '',
           batchId = '',
           toolSet = '';
-
       area = $('#area option:selected').text();
       waferId = $('#id').val();
       operationNumber = $('#number').val();
@@ -602,11 +623,9 @@
       var date = Date.now();
       toolSet = $('#toolSet').val();
       batchId = $('#batchId').val();
-
       var checkRequestor = names.indexOf(requestor) < 0;
       var checkOwner = names.indexOf(owner) < 0;
       
-
       if(area === 'Choose...') alert('Please Choose Area!!');
       else if(waferId === '') alert('Please Enter Wafer ID!!');
       else if(operationNumber === '') alert('Please Enter operation number!!');
@@ -631,9 +650,7 @@
               toolSet: toolSet,
               status: status
         };
-
         //console.log(reqJSON);
-
         $.post('getNewRequest', {req: reqJSON}, function(res) {
             if(res['ok']){
                 alert('Update success!!');
