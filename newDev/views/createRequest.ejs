@@ -544,6 +544,12 @@
     }
   }
 
+  var toolSet = document.getElementById("toolSet");
+  var default_option = document.createElement("option");
+  default_option.text = "Please Select An Request Area First";
+  default_option.setAttribute("class","toolSetOptions");
+  toolSet.add(default_option); 
+
   var area = document.getElementById("area");
   var area_value = "Choose...";
   area.addEventListener("click", function(){
@@ -551,33 +557,30 @@
     updateToolSetOptions();
   });
   
-  var toolSet = document.getElementById("toolSet");
-  var default_option = document.createElement("option");
-  default_option.text = "Please Select An Request Area First";
-  default_option.setAttribute("class","toolSetOptions");
-  toolSet.add(default_option); 
+
 
   function updateToolSetOptions(){
+  	$("#toolSet").empty();
     close("toolSetOptions");
     var options = [];
     if(area_value == "Choose..."){
       options = ["Please Select An Request Area First"];
     }else if(area_value == "IM"){
-      options = ["5 Zone - 1","5 Zone - 2","Ash","Nexus","PVDi","RuCVD","Ion Scan","SiN/LP"];
+      options = ["Choose...", "5 Zone - 1","5 Zone - 2","Ash","Nexus","PVDi","RuCVD","Ion Scan","SiN/LP"];
     }else if(area_value == "Anelva"){
-      options = [];
+      options = ["Choose...", ];
     }else if(area_value == "Photo"){
-      options = ["2x","5x","FSI","Hard Bake","HMDS Bake","Nano","Sorter","Stabilizter","SUSS"];
+      options = ["Choose...", "2x","5x","FSI","Hard Bake","HMDS Bake","Nano","Sorter","Stabilizter","SUSS"];
     }else if(area_value == "MR"){
-      options = ["Anelva","DS","Futek","IBDS","Cluster","Measure","XRF/ResMap","PVD Aisle 19", "PVD Aisle 24"];
+      options = ["Choose...", "Anelva","DS","Futek","IBDS","Cluster","Measure","XRF/ResMap","PVD Aisle 19", "PVD Aisle 24"];
     }else if(area_value == "Metro"){
-      options = ["AIT","Archer","Atlas","Complus","DUV","SCD","Verity"];
+      options = ["Choose...", "AIT","Archer","Atlas","Complus","DUV","SCD","Verity"];
     }else if(area_value == "Insp"){
-      options = ["Inspection 2", "Inspection E", "Inspection L"];
+      options = ["Choose...", "Inspection 2", "Inspection E", "Inspection L"];
     }else if(area_value == "CMP"){
-      options = ["AIT","CMP","DNS","Ebara","HRP","Inspection/Nano","SurfScan"];
+      options = ["Choose...", "AIT","CMP","DNS","Ebara","HRP","Inspection/Nano","SurfScan"];
     }else if(area_value == "Nife/Etch"){
-      options = ["Ash","EQ Strip", "Inspection", "Mag Bake", "Mag Initialization", "MXR", "Plating", "Plating 45/55", "Plating 80/20", "Tencor", "Tosetz"];
+      options = ["Choose...", "Ash","EQ Strip", "Inspection", "Mag Bake", "Mag Initialization", "MXR", "Plating", "Plating 45/55", "Plating 80/20", "Tencor", "Tosetz"];
     }else if(area_value == "Metals"){
       options = [];
     }
