@@ -5,6 +5,9 @@ var path = require('path');
 var bodyParser = require("body-parser");
 var server = require('http').createServer(app);
 var port = process.env.PORT || 3000;
+var mailer = require('nodemailer');
+
+var areas = ["IM", "Anelva", "Photo", "MR", "Metro", "Insp", "CMP", "NiFe/Etch", "Metals"];
 
 var config = {
     apiKey: "AIzaSyAyXT6uOdnaUbVFFiFgrx15cRVqXlg36U8",
@@ -86,8 +89,66 @@ router.post("/getNewRequest", function(req, res) {
 
       var requestID = ref.child(newID);
       requestID.set(currReq);
+      SendAutomatedEmail(currReq.area, newID);
     });
 });
+
+function SendAutomatedEmail(area, id){
+  var emails = [];
+  switch(area){
+    case areas[0]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[1]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[2]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[3]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[4]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[5]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[6]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[7]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+    case areas[8]:
+      emails = ["kevin.zeng@wdc.com", "huanze.shu@wdc.com", "jeffrey.li@wdc.com"];
+      break;
+  }
+
+  var transporter = mailer.createTransport({
+    service: "gmail",
+    auth: {
+     user: "test3243245@gmail.com",
+     pass: "1234abcd!@#$"
+    }
+  });
+
+  for(i = 0; i < emails.length; i++){
+    var mailOptions = {
+      from: "test3243245@gmail.com",
+      to: emails[i],
+      subject: "A request has been posted in your area",
+      text: "https://devcontrolcenter.herokuapp.com/requestStatusExample?id=" + id;
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      }else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  }
+}
 
 
 router.get("/viewRequests",function(req,res){
