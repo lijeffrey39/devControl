@@ -659,8 +659,11 @@
             if(res['ok']){
                 alert('Update success!!');
             }
-        }, 'json').done(function() {
+        }, 'json').done(function(res) {
           console.log(reqJSON);
+          console.log(res['reqId']);
+          var reqId = res['reqId'];
+          window.location.href = "/requestStatusExample?id=" + reqId;
         });
       }
   });
