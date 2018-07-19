@@ -138,7 +138,7 @@ function SendAutomatedEmail(area, id){
       from: "test3243245@gmail.com",
       to: emails[i],
       subject: "A request has been posted in your area",
-      text: "https://devcontrolcenter.herokuapp.com/requestStatusExample?id=" + id;
+      text: "https://devcontrolcenter.herokuapp.com/requestStatusExample?id=" + id
     };
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
