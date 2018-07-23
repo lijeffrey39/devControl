@@ -40,7 +40,7 @@
             <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/viewRequests">View Requests</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/waferStatus">Request Status</a>
+            <a class="nav-link" href="https://devcontrolcenter.herokuapp.com/requestStatus">Request Status</a>
           </li>
         </ul>
       </div>
@@ -75,25 +75,25 @@
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Requestor</label>
                   <div class="col-sm-9">
-                    <input class="form-control" type="text" placeholder="Integration Eng" readonly>
+                    <input id = "requestor" class="form-control" type="text" placeholder="" readonly>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="staticEmail" class="col-sm-3 col-form-label">Owner</label>
                   <div class="col-sm-9">
-                    <input class="form-control" type="text" placeholder="Photo Tech" readonly>
+                    <input id = "owner" class="form-control" type="text" placeholder="" readonly>
                   </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-3 col-form-label">Wafer ID</label>
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" placeholder="11" readonly>
+                        <input id = "waferId" class="form-control" type="text" placeholder="" readonly>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-3 col-form-label">Tool set</label>
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" placeholder="Tool #1" readonly>
+                        <input id = "toolSet" class="form-control" type="text" placeholder="" readonly>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -105,13 +105,13 @@
                 <div class="form-group row">
                   <label for="staticEmail" class="col-sm-3 col-form-label">Status</label>
                   <div class="col-sm-9">
-                    <input class="form-control" type="text" placeholder="In Progress" readonly>
+                    <input id = "status" class="form-control" type="text" placeholder="" readonly>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputPassword" class="col-sm-3 col-form-label">Request</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Expose wafer XYZ on Canon tool with recipe 123. Notify when complete. " readonly></textarea>
+                    <textarea id = "request" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Expose wafer XYZ on Canon tool with recipe 123. Notify when complete. " readonly></textarea>
                   </div>
                 </div>
                 <br>
@@ -142,10 +142,22 @@
       var requestID = <%-JSON.stringify(id)%>;
       console.log(request)
       if (request != null) {
-        area = request.requestArea;
+        area = request.area;
+        requestor = request.requestor;
+        owner = request.owner;
+        waferId = request.waferId;
+        toolSet = request.toolSet;
+        status = request.status;
+        request = request.request;
         // requestID = request.id;
         document.getElementById("requestID").innerHTML = "Request ID#: " + requestID;
         document.getElementById("requestArea").placeholder = area;
+        document.getElementById("requestor").placeholder = requestor;
+        document.getElementById("owner").placeholder = owner;
+        document.getElementById("waferId").placeholder = waferId;
+        document.getElementById("toolSet").placeholder = toolSet;
+        document.getElementById("status").placeholder = status;
+        document.getElementById("request").placeholder = request;
       } else {
         document.getElementById("requestID").innerHTML = "Request ID does not exist";
       }

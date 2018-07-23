@@ -90,6 +90,7 @@ router.post("/getNewRequest", function(req, res) {
       var requestID = ref.child(newID);
       requestID.set(currReq);
       SendAutomatedEmail(currReq.area, newID);
+      res.send({reqId: newID});
     });
 });
 
